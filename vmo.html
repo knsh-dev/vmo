@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNC & SCIS: My Journey of Purpose</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Crimson+Pro:wght@400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-blue: #1a2b4a;
+            --gold: #d4a574;
+            --cream: #f8f5f0;
+            --burgundy: #7a2828;
+            --sage: #6b8e7f;
+            --charcoal: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #e8e4dc 100%);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        .poster-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        /* Decorative background elements */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.05;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--deep-blue);
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            bottom: 100px;
+            left: -50px;
+            border-color: var(--burgundy);
+        }
+
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            right: 10%;
+            border-color: var(--sage);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .university-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--deep-blue);
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .scis-name {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--burgundy);
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .divider {
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        .poster-subtitle {
+            font-size: 1.5rem;
+            color: var(--sage);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        /* Main grid layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Card styles */
+        .section-card {
+            background: white;
+            padding: 45px;
+            border-radius: 0;
+            box-shadow: 12px 12px 0 rgba(26, 43, 74, 0.1);
+            border: 3px solid var(--deep-blue);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .section-card:nth-child(1) { animation-delay: 0.2s; }
+        .section-card:nth-child(2) { animation-delay: 0.4s; }
+        .section-card:nth-child(3) { animation-delay: 0.6s; }
+        .section-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .section-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 17px 17px 0 rgba(26, 43, 74, 0.15);
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(135deg, var(--gold), var(--burgundy));
+            border-radius: 0;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .section-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .card-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--deep-blue);
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .card-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+
+        /* Core Values special styling */
+        .values-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .value-item {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--burgundy);
+            transform: rotate(45deg);
+        }
+
+        .value-title {
+            font-weight: 700;
+            color: var(--deep-blue);
+            font-size: 1.15rem;
+            margin-bottom: 5px;
+        }
+
+        .value-description {
+            font-size: 1rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Reflection section */
+        .reflection-section {
+            background: linear-gradient(135deg, var(--deep-blue), #2a3f5f);
+            color: var(--cream);
+            padding: 60px;
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-out 1s backwards;
+        }
+
+        .reflection-section::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 15rem;
+            color: rgba(248, 245, 240, 0.08);
+            line-height: 1;
+            font-weight: 900;
+        }
+
+        .reflection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .reflection-content {
+            font-size: 1.25rem;
+            line-height: 2;
+            position: relative;
+            z-index: 1;
+            color: var(--cream);
+        }
+
+        .reflection-content p {
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .university-name {
+                font-size: 2.5rem;
+            }
+
+            .section-card {
+                padding: 35px;
+            }
+
+            .reflection-section {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .poster-container {
+                padding: 40px 20px;
+            }
+
+            .university-name {
+                font-size: 2rem;
+            }
+
+            .scis-name {
+                font-size: 1rem;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+            }
+
+            .section-card {
+                padding: 25px;
+            }
+
+            .reflection-section {
+                padding: 30px 25px;
+            }
+
+            .reflection-title {
+                font-size: 2rem;
+            }
+
+            .reflection-content {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+        <div class="bg-circle circle-3"></div>
+    </div>
+
+    <div class="poster-container">
+        <header class="header">
+            <h1 class="university-name">University of Nueva Caceres</h1>
+            <p class="scis-name">School of Computer & Information Sciences</p>
+            <div class="divider"></div>
+            <p class="poster-subtitle">A Reflection on Purpose & Values</p>
+        </header>
+
+        <div class="content-grid">
+            <!-- UNC Vision -->
+            <div class="section-card">
+                <div class="card-label">UNC Foundation</div>
+                <h2 class="card-title">Vision</h2>
+                <div class="card-content">
+                    To be the top university of choice for Bicolanos everywhere, nurturing students through empowering, outcome-based education, to help them become purposeful, productive, and future-ready human beings who will contribute to the sustainable development of Bicol and better tomorrows for all.
+                </div>
+            </div>
+
+            <!-- UNC Mission -->
+            <div class="section-card">
+                <div class="card-label">UNC Foundation</div>
+                <h2 class="card-title">Mission</h2>
+                <div class="card-content">
+                    To expand opportunities for every Bicolano everywhere and prepare them for a purposeful life, by providing empowering outcome-based education and a nurturing learning environment.
+                </div>
+            </div>
+
+            <!-- UNC Core Values -->
+            <div class="section-card">
+                <div class="card-label">UNC Foundation</div>
+                <h2 class="card-title">Core Values</h2>
+                <ul class="values-list">
+                    <li class="value-item">
+                        <div class="value-title">We Champion Excellence</div>
+                        <div class="value-description">We consistently strive for excellence in everything we do.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">We Nurture Dreams</div>
+                        <div class="value-description">We passionately guide and inspire our students to leverage their potentials and aspire for better lives.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">We Do The Right Things Right</div>
+                        <div class="value-description">We uphold integrity in everything we do. We hold ourselves to high standards of personal accountability and character. We do things right.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">We Are Dynamic and Creative</div>
+                        <div class="value-description">We anticipate the forces of change. We explore possibilities with intent and purpose.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">We Respect Each Other and Work As A Team</div>
+                        <div class="value-description">We collaboratively maximize our talents and capabilities. We hold each other in high regard and passionately realize our shared purpose, priorities and promises.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- SCIS Graduate Attributes -->
+            <div class="section-card">
+                <div class="card-label">SCIS Excellence</div>
+                <h2 class="card-title">Graduate Attributes</h2>
+                <ul class="values-list">
+                    <li class="value-item">
+                        <div class="value-title">Excellent Communicator</div>
+                        <div class="value-description">Ability to effectively use oral and written skills in sharing and receiving updated and verified information through various communication channels.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">Creative Leader</div>
+                        <div class="value-description">Ability to critically think of solutions and strategies that contribute to making great decisions and innovations.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">Ethically Responsible Citizen</div>
+                        <div class="value-description">Ability to harmoniously live and work with others with trust, dignity and integrity promoting respect for human rights, multicultural understanding, and preservation of cultural heritage.</div>
+                    </li>
+                    <li class="value-item">
+                        <div class="value-title">Lifelong Learner</div>
+                        <div class="value-description">Ability to up-skill, cross-skill and re-skill himself/herself, learn independently, reflect, and adapt with the societal changes/demands.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Personal Reflection -->
+        <section class="reflection-section">
+            <h2 class="reflection-title">My Personal Reflection</h2>
+            <div class="reflection-content">
+                <p>
+                    As an SCIS student at the University of Nueva Caceres, these values are not merely words on paper—they are the <span class="highlight">compass that guides my academic journey</span> and shapes who I am becoming. Every class, every project, every challenge is an opportunity to embody these principles.
+                </p>
+                <p>
+                    The mission to provide <span class="highlight">empowering, outcome-based education</span> resonates deeply with me. I see it in action when professors encourage us to think critically, when we're pushed to solve real-world problems through code, and when we're given the freedom to innovate. This isn't just about learning programming languages—it's about becoming a <span class="highlight">purposeful, productive, and future-ready individual</span>.
+                </p>
+                <p>
+                    The core value of <span class="highlight">"We Nurture Dreams"</span> particularly speaks to my heart. As someone passionate about technology and its potential to transform lives, I feel supported in exploring my aspirations. SCIS doesn't just teach us technical skills; it cultivates our ability to <span class="highlight">dream bigger and reach higher</span>. The emphasis on being a Lifelong Learner reminds me that graduation is not the end, but the beginning of a continuous journey of growth.
+                </p>
+                <p>
+                    Being part of SCIS means embracing the responsibility of becoming an <span class="highlight">Ethically Responsible Citizen</span> in the digital age. In a field where our work can impact millions, integrity isn't optional—it's essential. The values of excellence, teamwork, and doing things right have become my personal standard, pushing me to contribute meaningfully to both my community in Bicol and the broader tech ecosystem.
+                </p>
+                <p>
+                    These aren't just institutional values—<span class="highlight">they are becoming my values</span>, shaping the professional and person I aspire to be.
+                </p>
+            </div>
+            <div class="signature">— An SCIS Student's Journey</div>
+        </section>
+    </div>
+</body>
+</html>
